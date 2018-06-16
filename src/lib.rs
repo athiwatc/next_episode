@@ -8,7 +8,6 @@ extern crate test;
 
 use itertools::Itertools;
 use regex::Regex;
-use std::cmp::Ordering;
 
 struct Episode<'a> {
     fullname: &'a str,
@@ -28,10 +27,7 @@ pub fn possible_next_episode<'a>(current_episode: &str, episodes: &'a [&str]) ->
                 (f.episode > curr_ep.episode && f.season == curr_ep.season)
                     || f.season > curr_ep.season
             })
-            .sorted_by(|a, b| match Ord::cmp(&a.season, &b.season) {
-                Ordering::Equal => Ord::cmp(&a.episode, &b.episode),
-                other => other,
-            })
+            .sorted_by_key(|k| (k.season, k.episode))
             .first()
             .map(|m| m.fullname)
     })
