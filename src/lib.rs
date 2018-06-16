@@ -1,7 +1,10 @@
+#![feature(test)]
+
 #[macro_use]
 extern crate lazy_static;
 extern crate itertools;
 extern crate regex;
+extern crate test;
 
 use itertools::Itertools;
 use regex::Regex;
@@ -59,7 +62,8 @@ fn parse_episode(episode: &str) -> Option<Episode> {
 
 #[cfg(test)]
 mod tests {
-    use possible_next_episode;
+    use super::*;
+    use test::Bencher;
 
     const EP_LIST: &'static [&'static str] = &[
         "SomeSeries.S01E01.1080p.SomeFormat.mkv",
@@ -69,6 +73,14 @@ mod tests {
         "FavSeries.S02E02.1080p.Format2.mkv",
         "FavSeries.S03E02.720p.Format3.mkv",
     ];
+
+    #[bench]
+    fn bench_ep(b: &mut Bencher) {
+        b.iter(|| {
+            let nxt = possible_next_episode("SomeSeries.S01E01.SomeFormat.mkv", &EP_LIST);
+            assert_eq!(nxt, Some("SomeSeries.S01E02.720p.Format3.mkv"));
+        });
+    }
 
     #[test]
     fn next_ep() {
