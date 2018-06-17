@@ -1,6 +1,9 @@
 # next_episode
 Get the next possible episode
 
+Version 0.2.0:
+- Improve speed of regex function
+
 ```Rust
 const EP_LIST: &'static [&'static str] = &[
     "SomeSeries.S01E01.1080p.SomeFormat.mkv",
