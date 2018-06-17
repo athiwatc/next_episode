@@ -4,6 +4,8 @@ version = "0.2.0"
 authors = ["Athiwat Chunlakhan"]
 description = "Find the next possible episode"
 license = "Apache-2.0"
+exclude = [".vscode"]
+
 
 [dependencies]
 lazy_static = "1.0.1"
