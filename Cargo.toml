@@ -1,6 +1,6 @@
 [package]
 name = "next_episode"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Athiwat Chunlakhan"]
 description = "Find the next possible episode"
 license = "Apache-2.0"
@@ -9,3 +9,10 @@ license = "Apache-2.0"
 lazy_static = "1.0.1"
 regex = "1.0.0"
 itertools = "0.7.8"
+
+[dev-dependencies]
+criterion = "0.2"
+ 
+[[bench]]
+name = "my_benchmark"
+harness = false

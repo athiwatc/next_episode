@@ -1,10 +1,7 @@
-#![feature(test)]
-
 #[macro_use]
 extern crate lazy_static;
 extern crate itertools;
 extern crate regex;
-extern crate test;
 
 use itertools::Itertools;
 use regex::Regex;
@@ -35,7 +32,7 @@ pub fn possible_next_episode<'a>(current_episode: &str, episodes: &'a [&str]) ->
 
 fn parse_episode(episode: &str) -> Option<Episode> {
     lazy_static! {
-        static ref RE: Regex = Regex::new(r"((?i)(.+).s(\d+)e(\d+).*)").unwrap();
+        static ref RE: Regex = Regex::new(r"((?i)^(.+).s(\d+)e(\d+).*)$").unwrap();
     }
 
     RE.captures(episode).and_then(|caps| {
@@ -59,7 +56,6 @@ fn parse_episode(episode: &str) -> Option<Episode> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use test::Bencher;
 
     const EP_LIST: &'static [&'static str] = &[
         "SomeSeries.S01E01.1080p.SomeFormat.mkv",
@@ -69,14 +65,6 @@ mod tests {
         "Fav.Series.S02E02.1080p.Format2.mkv",
         "Fav.Series.S03E02.720p.Format3.mkv",
     ];
-
-    #[bench]
-    fn bench_ep(b: &mut Bencher) {
-        b.iter(|| {
-            let nxt = possible_next_episode("SomeSeries.S01E01.SomeFormat.mkv", &EP_LIST);
-            assert_eq!(nxt, Some("SomeSeries.S01E02.720p.Format3.mkv"));
-        });
-    }
 
     #[test]
     fn next_ep() {
