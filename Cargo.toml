@@ -1,6 +1,6 @@
 [package]
 name = "next_episode"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Athiwat Chunlakhan"]
 description = "Find the next possible episode"
 repository = "https://github.com/athiwatc/next_episode"
