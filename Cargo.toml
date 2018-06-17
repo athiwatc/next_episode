@@ -6,9 +6,6 @@ description = "Find the next possible episode"
 repository = "https://github.com/athiwatc/next_episode"
 homepage = "https://github.com/athiwatc/next_episode"
 license = "Apache-2.0"
-description = """
-A library for finding the next possible episode.
-"""
 readme = "README.md"
 exclude = [".vscode"]
 
