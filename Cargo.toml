@@ -9,8 +9,6 @@ license = "Apache-2.0"
 readme = "README.md"
 exclude = [".vscode"]
 
-
-
 [dependencies]
 lazy_static = "1.0.1"
 regex = "1.0.0"
