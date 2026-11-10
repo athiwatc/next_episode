@@ -5,7 +5,7 @@ extern crate next_episode;
 use criterion::Criterion;
 use next_episode::possible_next_episode;
 
-pub const EP_LIST: &'static [&'static str] = &[
+pub const EP_LIST: &[&str] = &[
     "SomeSeries.S01E01.1080p.SomeFormat.mkv",
     "SomeSeries.S01E05.720p.SomeFormat2.mkv",
     "SomeSeries.S01E07.720p.SomeFormat2.mkv",
@@ -20,7 +20,7 @@ pub const EP_LIST: &'static [&'static str] = &[
 
 fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("next ep", |b| {
-        b.iter(|| possible_next_episode("SomeSeries.S01E01.SomeFormat.mkv", &EP_LIST))
+        b.iter(|| possible_next_episode("SomeSeries.S01E01.SomeFormat.mkv", EP_LIST))
     });
 }
 
