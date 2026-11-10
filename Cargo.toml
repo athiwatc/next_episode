@@ -1,6 +1,7 @@
 [package]
 name = "next_episode"
 version = "0.3.0"
+edition = "2015"
 authors = ["Athiwat Chunlakhan"]
 description = "Find the next possible episode"
 repository = "https://github.com/athiwatc/next_episode"
@@ -10,13 +11,13 @@ readme = "README.md"
 exclude = [".vscode"]
 
 [dependencies]
-lazy_static = "1.0.1"
-regex = "1.0.0"
-itertools = "0.7.8"
+lazy_static = "1.5.1"
+regex = "1.13.1"
+itertools = "0.15.0"
 
 [dev-dependencies]
-criterion = "0.2"
- 
+criterion = "0.8.2"
+
 [[bench]]
 name = "my_benchmark"
 harness = false
